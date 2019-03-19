@@ -18,7 +18,7 @@ namespace Arithmetic
                 List<string> chengchuExp = new List<string>();
                 List<string> jiajianExp = new List<string>();
                 int tempValue = 0;
-                //先算乘除并添加到乘除队列里
+                //先算乘除并添加到乘除队列里 
                 for (int i = 0; i < rebuildExp.Count; i++)
                 {
                     if (int.TryParse(rebuildExp[i].ToString(), out tempValue))
