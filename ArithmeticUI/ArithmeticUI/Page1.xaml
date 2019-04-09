@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="600" Width="1000">
 
-    <Grid Margin="10,0,0,0" >
+    <Grid Margin="10,0,0,0" Loaded="Grid_Loaded" >
         <Grid.Background>
             <ImageBrush ImageSource="/Assets/02.jpg"/>
         </Grid.Background>
@@ -25,15 +25,14 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="欢迎来到四则运算测验" FontSize="36" Grid.ColumnSpan="3" Margin="0,0,0,20" FontWeight="Bold" TextAlignment="Center"/>
+        <Button x:Name="BackButten1" Content="返回首页" Margin="20,10,0,0" Width="100" Height="40" Background="#331C41DC" BorderBrush="#FFED1A1A" FontWeight="Bold" Click="BackButten1_Click"/>
         <TextBlock Grid.Row="1" Text="题目：" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" />
-        <TextBox Grid.Row="2" Height="260" Margin="20,20,0,0"/>
+        <ListBox  Grid.Row="2" Height="260" Margin="20,20,0,0" Name="listSubject"/>
         <TextBlock Grid.Row="1" Grid.Column="1" Text="答题卡：" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Height="260" Margin="20,20,0,0"/>
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="答对题数：" VerticalAlignment="Center" TextAlignment="Left" Margin="30,0,0,0" FontFamily="Segoe UI" FontWeight="Bold"/>
-        <TextBox Grid.Row="3" Grid.Column="0" Width="100" Height="30" Margin="0,0,60,0"/>
-        <Button Grid.Row="3" Grid.Column="1" Content="完成测验" Margin="280,20,0,0" Width="100" Height="40" Background="#3320E40C" BorderBrush="#FFED1A1A" FontWeight="Bold"/>
-        <Button x:Name="BackButten1" Grid.Row="4" Grid.Column="1" Content="返回首页" Margin="280,20,0,0" Width="100" Height="40" Background="#331C41DC" BorderBrush="#FFED1A1A" FontWeight="Bold" Click="BackButten1_Click"/>
+        <ListBox Grid.Row="2" Grid.Column="1" Height="260" Margin="20,20,0,0" Name="listResult"/>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="答对题数：" VerticalAlignment="Center" TextAlignment="Left" Margin="30,50,0,0" FontFamily="Segoe UI" FontWeight="Bold"/>
+        <TextBox Grid.Row="4" Grid.Column="0" Width="100" Height="30" Margin="0,50,60,0"/>
+        <Button x:Name="SaveButton1" Grid.Row="3" Grid.Column="1" Content="保存" Margin="280,0,0,140" Width="100" Height="40" Background="#3320E40C" BorderBrush="#FFED1A1A" FontWeight="Bold" HorizontalAlignment="Left" Grid.RowSpan="3" VerticalAlignment="Bottom"/>
     </Grid>
 </Page>
 

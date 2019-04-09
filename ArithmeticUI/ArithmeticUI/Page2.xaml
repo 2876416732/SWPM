@@ -8,9 +8,15 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="600" Width="1000">
 
-    <Grid Margin="10,0,0,0" Background="#FF9FAECD">
-        
+    <Grid Margin="10,0,0,0" Loaded="Grid_Loaded">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/02.jpg"/>
+        </Grid.Background>
+
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -23,26 +29,16 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="欢迎来到四则运算考试" FontSize="36" Grid.ColumnSpan="3" Margin="0,0,0,20" FontWeight="Bold" TextAlignment="Center"/>
+        <Button x:Name="BackButten2"  Content="返回首页" Margin="20,10,0,0" Width="100" Height="40" Background="#3320E40C" BorderBrush="#FFED1A1A" FontWeight="Bold" Click="BackButten2_Click"/>
         <TextBlock Grid.Row="1" Text="题目：" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold" />
-        <TextBox Grid.Row="2" Height="260" Margin="20,20,0,0"/>
+        <ListBox Grid.Row="2" Height="260" Margin="20,20,0,0" Name="listSubject" />
         <TextBlock Grid.Row="1" Grid.Column="1" Text="答题卡：" VerticalAlignment="Center" TextAlignment="Center" FontWeight="Bold"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Height="260" Margin="20,20,0,0"/>
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="倒计时开始：" VerticalAlignment="Center" TextAlignment="Left" Margin="30,15,0,20" FontFamily="Segoe UI" FontWeight="Bold"/>
+        <ListBox Grid.Row="2" Grid.Column="1" Height="260" Margin="20,20,0,0" Name="listResult"/>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="倒计时开始：" Name="strTime" VerticalAlignment="Center" TextAlignment="Left" Margin="30,15,0,20" FontFamily="Segoe UI" FontWeight="Bold"/>
 
-        <Grid Grid.Row="4" Grid.Column="0"  Width="150" Height="150">
-            <Ellipse Stroke="Gray" StrokeThickness="10"/>
-            <Ellipse x:Name="MyEllipse" Stroke="DeepSkyBlue" StrokeThickness="10"  RenderTransformOrigin="0.5,0.5">
-                <Ellipse.RenderTransform>
-                    <RotateTransform Angle="-90"/>
-                </Ellipse.RenderTransform>
-            </Ellipse>
-            <TextBlock x:Name="txt" Foreground="Black" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center" ></TextBlock>
-        </Grid>
 
-        
-        <Button Grid.Row="3" Grid.Column="1" Content="提交试卷" Margin="280,20,0,0" Width="100" Height="40" Background="#3320E40C" BorderBrush="#FFED1A1A" FontWeight="Bold"/>
-        <Button x:Name="BackButten2" Grid.Row="4" Grid.Column="1" Content="返回首页" Margin="280,20,0,0" Width="100" Height="40" Background="#3320E40C" BorderBrush="#FFED1A1A" FontWeight="Bold" Click="BackButten2_Click"/>
+        <Button x:Name="SubmitButton" Grid.Row="4" Grid.Column="1" Content="提交试卷" Margin="280,20,0,0" Width="100" Height="40" Background="#3320E40C" BorderBrush="#FFED1A1A" FontWeight="Bold" Click="SubmitButton_Click"/>
+        <Button x:Name="SaveButton2" Grid.Row="5" Grid.Column="1" Content="保存" Margin="280,0,0,0" Width="100" Height="40" Background="#3320E40C" BorderBrush="#FFED1A1A" FontWeight="Bold"/>
     </Grid>
 </Page>
 

@@ -1,5 +1,4 @@
-﻿using CalculationModuleUWP;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -21,31 +20,16 @@ namespace ArithmeticUI
     /// <summary>
     /// 可用于自身或导航至 Frame 内部的空白页。
     /// </summary>
-    public sealed partial class Page1 : Page
+    public sealed partial class Page3 : Page
     {
-        public Page1()
+        public Page3()
         {
             this.InitializeComponent();
         }
 
-        private void BackButten1_Click(object sender, RoutedEventArgs e)
+        private void BackButten3_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
-        }
-
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            var t1 = Port.ProblemGeneration("10", "六年级");
-            var t2 = Port.ProblemGeneration("10", "一年级");
-
-            foreach (var i in t1.Keys)
-            {
-                listSubject.Items.Add(i);
-            }
-            foreach (var i in t2.Keys)
-            {
-                listSubject.Items.Add(i);
-            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CalculationModuleUWP;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,28 +26,51 @@ namespace ArithmeticUI
     {
         public Page2()
         {
-            int i = 0;
-            int TimeCount = 1800;//倒计时秒数
-            DispatcherTimer timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 1) };
-            timer.Tick += new EventHandler<object>(async (sender, e) =>
-            {
-                await Dispatcher.TryRunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
-                {
-                    i += 1;
-                    double temp = (385 * Math.PI) * i / TimeCount / 15;
-                    MyEllipse.StrokeDashArray = new DoubleCollection() { temp, 1000 };
-                    txt.Text = ((TimeCount - i) / 60).ToString("00") + ":" + ((TimeCount - i) % 60).ToString("00");
-                    if (i == TimeCount)
-                        timer.Stop();
-                }));
-            });
-            timer.Start();
             this.InitializeComponent();
         }
 
         private void BackButten2_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+            int m = 0, s = 0, targetTime = 1800;//倒计时秒数
+            strTime.Text = string.Format("剩余时间：{0}分 {1}秒", m, s);
+            DispatcherTimer timer = new DispatcherTimer() { Interval = new TimeSpan(0, 0, 1) };
+            timer.Tick += new EventHandler<object>(async (so, eo) =>
+            {
+                await Dispatcher.TryRunAsync(CoreDispatcherPriority.Normal, new DispatchedHandler(() =>
+                {
+                    targetTime--;
+                    m = targetTime / 60;
+                    s = targetTime % 60;
+                    strTime.Text = string.Format("剩余时间：{0}分 {1}秒", m, s);
+                    if (targetTime <= 0)
+                    {
+                        timer.Stop();
+                    }
+                }));
+            });
+            timer.Start();
+
+            var t1 = Port.ProblemGeneration("10", "一年级");
+            var t2 = Port.ProblemGeneration("10", "一年级");
+
+            foreach (var i in t1.Keys)
+            {
+                listSubject.Items.Add(i);
+            }
+            foreach (var i in t2.Keys)
+            {
+                listSubject.Items.Add(i);
+            }
+        }
+
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Page3));
         }
     }
 }
